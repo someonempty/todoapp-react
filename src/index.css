@@ -10,8 +10,6 @@
     padding: 100px 200px 30px;
 }
 
-
-
 .wrapper {
   display: flex;
   justify-content: center;
@@ -19,5 +17,4 @@
   margin: 0 auto;
   margin-bottom: 30px;
 }
-
 

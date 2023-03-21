@@ -1,21 +1,22 @@
-import Task from './components/Task';
-import MainHeader from './components/MainHeader';
-import MainInput from './components/MainInput';
-import TaskAddingButton from './components/TaskAddingButton';
-import { useState } from 'react';
+import { useState } from "react";
+import List from "./components/List";
+import Task from "./components/List/Task";
 
 function App() {
+	const [tasks, setTasks] = useState();
 
+	const addTask = () => {
+		if (tasks) {
+			return <Task text={tasks}/>
+		} else {
+			console.log('bober')
+		}
+		
+	}
 	return (
-		<div className='container'>
-			<MainHeader/>
-			<div className='wrapper'>
-				<MainInput tasks/>
-				<TaskAddingButton/>
-			</div>
-			<div className='tasks-list'>
-			</div>
-		</div>
+		<>
+		<List tasks={tasks} setTasks={setTasks} addTask={addTask}/>
+		</>
 	);
 }
 

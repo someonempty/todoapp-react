@@ -1,12 +1,12 @@
 import React from 'react';
 import './index.css'
 
-const Task = () => {
+const Task = ({text}) => {
 	return (
 		<div className='task'>
 			<div className='element-container'>
                 <input type="checkbox" className='checkbox-style'/>
-                <div className='task-text'>i</div>
+                <div className='task-text'>{text}</div>
             </div>
 		</div>
 	);
