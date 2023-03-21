@@ -1,0 +1,18 @@
+.task{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 60px;
+    border: 1px solid;
+    border-color: lightgray;
+    padding-left: 10px;
+    padding-right: 20px;
+    line-height: 1rem;
+  }   
+  
+  .tasks-list {
+    width: 100%;
+    overflow: auto;
+    height: 65vh;
+  }

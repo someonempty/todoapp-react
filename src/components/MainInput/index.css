@@ -1,0 +1,8 @@
+.task-input{ 
+    height: 35px;
+    width: 100%;
+    border: 1px solid lightgray;
+    padding-left: 10px;
+    border-radius: 5px;
+    outline: none;
+  }

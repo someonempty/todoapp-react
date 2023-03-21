@@ -1,0 +1,11 @@
+
+.adding-button{
+    cursor: pointer;
+    color: white;
+    background-color: rgb(52, 146, 205);
+    height: 40px;
+    width: 60px;
+    margin-left: 20px;
+    border: none;
+    border-radius: 5px;
+  }
