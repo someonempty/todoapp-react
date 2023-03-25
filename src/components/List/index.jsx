@@ -4,13 +4,18 @@ import Task from './Task';
 
 const List = ({tasks, setTasks}) => {
 
+	const [value, setValue] = useState('');
+
+	const addTask = (id, text) => {
+		let newTasks = [...tasks, {id: id, text: text}]
+		setTasks(newTasks);
+	}
+
 	const deleteTask = (id) => {
 		let newTasks = [...tasks].filter(task => task.id!=id)
 		setTasks(newTasks)
 		console.log('deleted')
 	}
-
-	const [value, setValue] = useState('');
 	return (
 		<div className='container'>
 			<h1 className='todolist-header'>Inbox</h1>
@@ -20,19 +25,18 @@ const List = ({tasks, setTasks}) => {
 					placeholder='New task'
 					onKeyDown={(e) => {
 						if (e.keyCode === 13) {
-							setTasks({ text: value });
+							addTask(Math.random, value)
 							setValue('');
 						}
 					}}
 					onChange={(e) => {
 						setValue(e.target.value);
 					}}
-					type='text'
 					className='task-input'
 				/>
 				<button
 					onClick={() => {
-						setTasks({ text: value });
+						addTask(Math.random, value)
 						setValue('');
 					}}
 					className='adding-button'
