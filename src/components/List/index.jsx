@@ -1,10 +1,16 @@
 import React, { useState } from 'react';
-import Task from './Task';
 import './index.css';
+import Task from './Task';
 
-const List = ({ tasks, setTasks, addTask }) => {
+const List = ({tasks, setTasks}) => {
+
+	const deleteTask = (id) => {
+		let newTasks = [...tasks].filter(task => task.id!=id)
+		setTasks(newTasks)
+		console.log('deleted')
+	}
+
 	const [value, setValue] = useState('');
-
 	return (
 		<div className='container'>
 			<h1 className='todolist-header'>Inbox</h1>
@@ -16,7 +22,6 @@ const List = ({ tasks, setTasks, addTask }) => {
 						if (e.keyCode === 13) {
 							setTasks({ text: value });
 							setValue('');
-							console.log(tasks);
 						}
 					}}
 					onChange={(e) => {
@@ -35,7 +40,13 @@ const List = ({ tasks, setTasks, addTask }) => {
 					Add
 				</button>
 			</div>
-			<div className='tasks-list'>{addTask()}</div>
+			<div className='tasks-list'>
+				{
+					tasks.map(task => (
+						<Task id={task.id} text={task.text} deleteTask={deleteTask}/>
+					))
+				}
+			</div>
 		</div>
 	);
 };

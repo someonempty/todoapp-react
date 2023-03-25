@@ -2,22 +2,28 @@ import { useState } from "react";
 import List from "./components/List";
 import Task from "./components/List/Task";
 
-// const addTask = () => {
-	// 	setTasks([...tasks, {}])
-	// }
-
 function App() {
-	const [tasks, setTasks] = useState('');
-
-	const addTask = () => {
-		if (tasks) {
-			return <Task text={tasks.text}/>
+	const [tasks, setTasks] = useState([
+		{
+			id: 1,
+			text: 'first task',
+			checked: false
+		},
+		{
+			id: 2,
+			text: 'second task',
+			checked: false
+		},
+		{
+			id: 3,
+			text: 'third task',
+			checked: false
 		}
-	}
+	]);
 
 	return (
 		<>
-		<List tasks={tasks} setTasks={setTasks} addTask={addTask}/>
+		<List tasks={tasks} setTasks={setTasks}/>
 		</>
 	);
 }
