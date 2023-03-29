@@ -36,27 +36,14 @@ function App() {
 		setLists(newLists);
 	};
 
-	const selectList = (id) => {
-		let newLists = [...lists].forEach(list => {
-		  if (list.id === id) {
-			selectedList = list;
-		  }
-		});
-
-	  }
-
-	// const changeList = (id, text) => {
-	// 	let newLists = [...lists].forEach(list => {
-	// 		if(list.id === id) {
-	// 			list.text = text
-	// 		}
-	// 	})
-	// 	setLists(newLists);
-	// }
+	const deleteList = (id) => {
+		let newLists = [...lists].filter(list => list.id !== id)
+		setLists(newLists)
+	}
 
 	return (
 		<main>
-			<Sidebar lists={lists} onAddList={addList} INBOX_LIST_ID={INBOX_LIST_ID} onSelectList={selectList}/>
+			<Sidebar lists={lists} count={tasks.length} INBOX_LIST_ID={INBOX_LIST_ID} onAddList={addList} onDeleteList={deleteList} />
 			<List
 				tasks={tasks}
 				setTasks={setTasks}
