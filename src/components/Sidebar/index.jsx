@@ -2,8 +2,7 @@ import React, { useState } from 'react';
 import './index.css';
 import SidebarListElement from './SidebarListElement/SidebarListElement';
 
-const Sidebar = ({ lists, onAddList }) => {
-	const INBOX_LIST_ID = 1;
+const Sidebar = ({ lists, onAddList, INBOX_LIST_ID, onSelectList}) => {
 
 	// const [selectedList, setSelectedList] = useState()
 
@@ -16,7 +15,7 @@ const Sidebar = ({ lists, onAddList }) => {
 						<div className='sidebar-list-element-text'>Inbox</div>
 					</div>
 					{lists.map((list) => (
-						<SidebarListElement text={list.text} />
+						<SidebarListElement key={list.id} lists={lists} text={list.text} onSelectList={onSelectList}/>
 					))}
 				</div>
 			</div>

@@ -3,13 +3,14 @@ import List from './components/List';
 import Sidebar from './components/Sidebar';
 
 function App() {
+	const INBOX_LIST_ID = 1;
 	const [tasks, setTasks] = useState([]);
-
 	const [lists, setLists] = useState([]);
+	const [selectedList, setSelectedList] = useState(INBOX_LIST_ID)
 
 	const addTask = (id, text) => {
 		if (text) {
-			let newTasks = [...tasks, { id: id, text: text, checked: false }];
+			let newTasks = [...tasks, { id: id, text: text, checked: false, selectedList: id }];
 			setTasks(newTasks);
 		}
 	};
@@ -35,9 +36,27 @@ function App() {
 		setLists(newLists);
 	};
 
+	const selectList = (id) => {
+		let newLists = [...lists].forEach(list => {
+		  if (list.id === id) {
+			selectedList = list;
+		  }
+		});
+
+	  }
+
+	// const changeList = (id, text) => {
+	// 	let newLists = [...lists].forEach(list => {
+	// 		if(list.id === id) {
+	// 			list.text = text
+	// 		}
+	// 	})
+	// 	setLists(newLists);
+	// }
+
 	return (
 		<main>
-			<Sidebar lists={lists} onAddList={addList} />
+			<Sidebar lists={lists} onAddList={addList} INBOX_LIST_ID={INBOX_LIST_ID} onSelectList={selectList}/>
 			<List
 				tasks={tasks}
 				setTasks={setTasks}
