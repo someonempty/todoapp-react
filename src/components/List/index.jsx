@@ -34,11 +34,18 @@ const List = ({ tasks, onAddTask, onDeleteTask, onToggleTask }) => {
 			</div>
 			<div className='tasks-list'>
 				{tasks.map((task) => (
-					<Task key={task.id} id={task.id} text={task.text} onDeleteTask={onDeleteTask} onToggleTask={onToggleTask} checked={task.checked}/>
+					<Task
+						key={task.id}
+						id={task.id}
+						text={task.text}
+						onDeleteTask={onDeleteTask}
+						onToggleTask={onToggleTask}
+						checked={task.checked}
+					/>
 				))}
 			</div>
 		</div>
 	);
 };
- 
+
 export default List;

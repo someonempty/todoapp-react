@@ -1,20 +1,31 @@
-import React, { useState } from 'react';
+import React from 'react';
 import './index.css';
 import SidebarListElement from './SidebarListElement/SidebarListElement';
 
-const Sidebar = ({ lists, count, onAddList, INBOX_LIST_ID, selectedList, onSelectList, onDeleteList, onChangeListName }) => {
+const Sidebar = ({
+	lists,
+	count,
+	onAddList,
+	INBOX_LIST_ID,
+	selectedList,
+	onSelectList,
+	onDeleteList,
+	onChangeListName,
+}) => {
 	return (
 		<aside className='sidebar'>
 			<div className='sidebar-list-container'>
 				<h1 className='todoapp-header'>ToDoApp</h1>
 				<div className='sidebar-list'>
-					<div 
-					className={`sidebar-list-element ${selectedList === INBOX_LIST_ID && 'sidebar-list-element-active'}`}
-					 id={INBOX_LIST_ID}
-					 onClick={() => {
-						onSelectList(INBOX_LIST_ID);
-					 }}
-					 >
+					<div
+						className={`sidebar-list-element ${
+							selectedList === INBOX_LIST_ID && 'sidebar-list-element-active'
+						}`}
+						id={INBOX_LIST_ID}
+						onClick={() => {
+							onSelectList(INBOX_LIST_ID);
+						}}
+					>
 						<div className='sidebar-list-element-text'>Inbox</div>
 						<div className='sidebar-list-button-container'>
 							<span>{count}</span>
@@ -40,6 +51,6 @@ const Sidebar = ({ lists, count, onAddList, INBOX_LIST_ID, selectedList, onSelec
 			</button>
 		</aside>
 	);
-}; 
+};
 
 export default Sidebar;

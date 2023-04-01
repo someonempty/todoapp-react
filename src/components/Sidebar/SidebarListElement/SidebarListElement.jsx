@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-const SidebarListElement = ({ id, text, count, selectedList, onSelectList, onDeleteList, onChangeListName }) => {
+const SidebarListElement = ({ id, text, count, selectedList, onSelectList, onDeleteList }) => {
 	const [isTrue, setIsTrue] = useState(false);
 	const [newValue, setNewValue] = useState('');
 	return (
@@ -13,12 +13,15 @@ const SidebarListElement = ({ id, text, count, selectedList, onSelectList, onDel
 		>
 			<div className='sidebar-list-element-text'>
 				{text}
-				{isTrue && <input value={newValue}
-					placeholder='New list'
-					onChange={(e) => {
-						setNewValue(e.target.value);
-					}}/>
-				}
+				{isTrue && (
+					<input
+						value={newValue}
+						placeholder='New list'
+						onChange={(e) => {
+							setNewValue(e.target.value);
+						}}
+					/>
+				)}
 			</div>
 			<div className='sidebar-list-button-container'>
 				<span>{count}</span>
@@ -34,4 +37,4 @@ const SidebarListElement = ({ id, text, count, selectedList, onSelectList, onDel
 	);
 };
 
-export default SidebarListElement; 
+export default SidebarListElement;

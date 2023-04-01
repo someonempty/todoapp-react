@@ -10,7 +10,7 @@ function App() {
 
 	const addTask = (id, text) => {
 		if (text) {
-			let newTasks = [...tasks, { id: id, text: text, checked: false, selectedList: id }];
+			let newTasks = [...tasks, { id: id, text: text, checked: false, taskListId: selectedList }];
 			setTasks(newTasks);
 		}
 	};
@@ -31,9 +31,9 @@ function App() {
 	};
 
 	const addList = (id) => {
-		let newLists = [...lists, { id: id, text: 'New list' }];
+		let newLists = [...lists, { id: id, text: 'New list', selectedList: selectedList }];
 		setLists(newLists);
-		setSelectedList(id)
+		setSelectedList(id);
 	};
 
 	const deleteList = (id) => {
@@ -41,8 +41,8 @@ function App() {
 		setLists(newLists);
 	};
 
-function selectList(id) {
-	setSelectedList(id)
+	function selectList(id) {
+		setSelectedList(id);
 	}
 
 	const changeListName = (id, text = 'New list') => {
@@ -70,6 +70,7 @@ function selectList(id) {
 			<List
 				tasks={tasks}
 				setTasks={setTasks}
+				selectedList={selectedList}
 				onAddTask={addTask}
 				onDeleteTask={deleteTask}
 				onToggleTask={toggleTask}
