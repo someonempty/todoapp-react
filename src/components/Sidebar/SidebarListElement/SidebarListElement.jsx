@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-const SidebarListElement = ({ id, text, count, selectedList, onDeleteList, onChangeListName }) => {
+const SidebarListElement = ({ id, text, count, selectedList, onSelectList, onDeleteList, onChangeListName }) => {
 	const [isTrue, setIsTrue] = useState(false);
 	const [newValue, setNewValue] = useState('');
 	return (
@@ -8,6 +8,7 @@ const SidebarListElement = ({ id, text, count, selectedList, onDeleteList, onCha
 			className={`sidebar-list-element ${selectedList === id && 'sidebar-list-element-active'}`}
 			onClick={(e) => {
 				e.stopPropagation();
+				onSelectList(id);
 			}}
 		>
 			<div className='sidebar-list-element-text'>

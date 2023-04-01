@@ -41,10 +41,9 @@ function App() {
 		setLists(newLists);
 	};
 
-// function selectList(id) {
-// 		let newLists = [...lists, {selectedList: id}]
-// 		setLists(newLists)
-// 	}
+function selectList(id) {
+	setSelectedList(id)
+	}
 
 	const changeListName = (id, text = 'New list') => {
 		let newLists = [...lists].map((list) => {
@@ -63,6 +62,7 @@ function App() {
 				count={tasks.length}
 				INBOX_LIST_ID={INBOX_LIST_ID}
 				selectedList={selectedList}
+				onSelectList={selectList}
 				onAddList={addList}
 				onDeleteList={deleteList}
 				onChangeListName={changeListName}
