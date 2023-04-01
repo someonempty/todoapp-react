@@ -3,7 +3,6 @@ import './index.css'
 
 const Task = ({id, text, onDeleteTask, onToggleTask, checked}) => {
 
-
 	return (
 		<div className='task'>
 			<div className='element-container'>
@@ -15,4 +14,4 @@ const Task = ({id, text, onDeleteTask, onToggleTask, checked}) => {
 	);
 };
 
-export default Task;
+export default Task; 

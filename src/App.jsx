@@ -6,7 +6,7 @@ function App() {
 	const INBOX_LIST_ID = 1;
 	const [tasks, setTasks] = useState([]);
 	const [lists, setLists] = useState([]);
-	const [selectedList, setSelectedList] = useState(INBOX_LIST_ID)
+	const [selectedList, setSelectedList] = useState(INBOX_LIST_ID);
 
 	const addTask = (id, text) => {
 		if (text) {
@@ -18,7 +18,6 @@ function App() {
 	const deleteTask = (id) => {
 		let newTasks = [...tasks].filter((task) => task.id != id);
 		setTasks(newTasks);
-		console.log('deleted');
 	};
 
 	const toggleTask = (id) => {
@@ -32,18 +31,42 @@ function App() {
 	};
 
 	const addList = (id) => {
-		let newLists = [...lists, { id: id, text: 'New List' }];
+		let newLists = [...lists, { id: id, text: 'New list' }];
 		setLists(newLists);
+		setSelectedList(id)
 	};
 
 	const deleteList = (id) => {
-		let newLists = [...lists].filter(list => list.id !== id)
-		setLists(newLists)
-	}
+		let newLists = [...lists].filter((list) => list.id !== id);
+		setLists(newLists);
+	};
+
+// function selectList(id) {
+// 		let newLists = [...lists, {selectedList: id}]
+// 		setLists(newLists)
+// 	}
+
+	const changeListName = (id, text = 'New list') => {
+		let newLists = [...lists].map((list) => {
+			if (list.id == id) {
+				list.text = text;
+			}
+			return list;
+		});
+		setLists(newLists);
+	};
 
 	return (
 		<main>
-			<Sidebar lists={lists} count={tasks.length} INBOX_LIST_ID={INBOX_LIST_ID} onAddList={addList} onDeleteList={deleteList} />
+			<Sidebar
+				lists={lists}
+				count={tasks.length}
+				INBOX_LIST_ID={INBOX_LIST_ID}
+				selectedList={selectedList}
+				onAddList={addList}
+				onDeleteList={deleteList}
+				onChangeListName={changeListName}
+			/>
 			<List
 				tasks={tasks}
 				setTasks={setTasks}
